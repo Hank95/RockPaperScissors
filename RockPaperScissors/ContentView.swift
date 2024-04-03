@@ -40,7 +40,19 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .foregroundColor(.white)
                 }
+                Text("The computer picked")
+                    .foregroundStyle(.white)
+                    .fontWeight(.bold)
+                Text(choices[correctAnswer].capitalized)
+                    .foregroundStyle(.white)
+                    .font(.subheadline.weight(.semibold))
                 Spacer()
+                VStack{
+                    Text("Round \(round)")
+                    Text("Score: \(points)")
+                }
+                .foregroundColor(.white)
+                
                 Spacer()
                 
             }
@@ -49,9 +61,10 @@ struct ContentView: View {
     }
     
     func buttonAction(_ index:Int){
-        if(index == correctAnswer){
-            
+        if(index != correctAnswer){
+            points += 1
         }
+        round += 1
         correctAnswer = Int.random(in: 0...2)
         print(correctAnswer)
     }
